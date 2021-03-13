@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tracking_app/AllWidgets/Divider.dart';
+import 'package:tracking_app/Assistants/assistantMethods.dart';
 
 // ignore: camel_case_types
 class mainScreen extends StatefulWidget {
@@ -32,6 +33,8 @@ class _mainScreenState extends State<mainScreen> {
         new CameraPosition(target: latLatPostion, zoom: 14);
     newMapController
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+    String address = await AssistantMethods().searchCoordinateAddress(position);
+    print("This is your address :" + address);
   }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
