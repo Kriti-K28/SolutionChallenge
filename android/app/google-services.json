@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1053585447596",
+    "project_id": "tracking-app-1aa1c",
+    "storage_bucket": "tracking-app-1aa1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053585447596:android:43898e0ec98ab18a2e5d09",
+        "android_client_info": {
+          "package_name": "com.kriti.trackingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053585447596-2n0nai181jlc3b89mu2vgh9m97930cau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeP-fC0KJPqBxiKs_FQ4QVEYLQY-zO8Cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053585447596-2n0nai181jlc3b89mu2vgh9m97930cau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
