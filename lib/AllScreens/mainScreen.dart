@@ -4,8 +4,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:tracking_app/AllWidgets/Divider.dart';
 import 'package:tracking_app/Assistants/assistantMethods.dart';
+import 'package:tracking_app/DataHandle/appData.dart';
 
 // ignore: camel_case_types
 class mainScreen extends StatefulWidget {
@@ -33,7 +35,7 @@ class _mainScreenState extends State<mainScreen> {
         new CameraPosition(target: latLatPostion, zoom: 14);
     newMapController
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-    String address = await AssistantMethods().searchCoordinateAddress(position);
+    String address = await AssistantMethods.searchCoordinateAddress(position,context);
     print("This is your address :" + address);
   }
 
@@ -243,7 +245,10 @@ class _mainScreenState extends State<mainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Add home"),
+                            Text(
+                              Provider.of<AppData>(context).pickupLocation !=null?
+                               Provider.of<AppData>(context).pickupLocation.placeName:"Add Home"
+                            ),
                             SizedBox(
                               height: 4.0,
                             ),
