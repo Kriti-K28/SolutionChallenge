@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:tracking_app/AllScreens/searchScreen.dart';
 import 'package:tracking_app/AllWidgets/Divider.dart';
 import 'package:tracking_app/Assistants/assistantMethods.dart';
 import 'package:tracking_app/DataHandle/appData.dart';
@@ -35,7 +36,8 @@ class _mainScreenState extends State<mainScreen> {
         new CameraPosition(target: latLatPostion, zoom: 14);
     newMapController
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-    String address = await AssistantMethods.searchCoordinateAddress(position,context);
+    String address =
+        await AssistantMethods.searchCoordinateAddress(position, context);
     print("This is your address :" + address);
   }
 
@@ -204,32 +206,40 @@ class _mainScreenState extends State<mainScreen> {
                       style: TextStyle(fontSize: 12.0),
                     ),
                     SizedBox(height: 20.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        // borderRadius: BorderRadius.only(
-                        //     topLeft: Radius.circular(10.0),
-                        //     topRight: Radius.circular(10.0)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black,
-                            blurRadius: 3.0,
-                            spreadRadius: 0.5,
-                            offset: Offset(0.1, 0.1),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.search,
-                            color: Colors.black,
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Text("Search Drop off")
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SearchScreen()));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          // borderRadius: BorderRadius.only(
+                          //     topLeft: Radius.circular(10.0),
+                          //     topRight: Radius.circular(10.0)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black,
+                              blurRadius: 3.0,
+                              spreadRadius: 0.5,
+                              offset: Offset(0.1, 0.1),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.search,
+                              color: Colors.black,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text("Search Drop off")
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(height: 24.0),
@@ -245,10 +255,12 @@ class _mainScreenState extends State<mainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              Provider.of<AppData>(context).pickupLocation !=null?
-                               Provider.of<AppData>(context).pickupLocation.placeName:"Add Home"
-                            ),
+                            Text(Provider.of<AppData>(context).pickUpLocation !=
+                                    null
+                                ? Provider.of<AppData>(context)
+                                    .pickUpLocation
+                                    .placeName
+                                : "Add Home"),
                             SizedBox(
                               height: 4.0,
                             ),

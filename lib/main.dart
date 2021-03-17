@@ -10,7 +10,11 @@ import 'package:tracking_app/DataHandle/Appdata.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create : (_) => AppData()),
+    ],
+    child: MyApp()));
 }
 
 DatabaseReference userRef =

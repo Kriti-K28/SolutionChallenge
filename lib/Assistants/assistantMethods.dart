@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:tracking_app/Assistants/requestAssistant.dart';
@@ -8,8 +6,8 @@ import 'package:tracking_app/Models/address.dart';
 import 'package:tracking_app/configMap.dart';
 
 class AssistantMethods {
-  static Future<String> searchCoordinateAddress(
-      Position position, context) async {
+  static Future<String> searchCoordinateAddress( Position position, context) async 
+  {
     String placeAddress = "";
     String st1, st2, st3, st4;
     String url =
