@@ -6,8 +6,8 @@ import 'package:tracking_app/Models/address.dart';
 import 'package:tracking_app/configMap.dart';
 
 class AssistantMethods {
-  static Future<String> searchCoordinateAddress( Position position, context) async 
-  {
+  static Future<String> searchCoordinateAddress(
+      Position position, context) async {
     String placeAddress = "";
     String st1, st2, st3, st4;
     String url =
@@ -24,8 +24,9 @@ class AssistantMethods {
       userPickupAddress.longitutde = position.longitude;
       userPickupAddress.latitude = position.latitude;
       userPickupAddress.placeName = placeAddress;
-      Provider.of<AppData>(context, listen: false)
-          .updatePickupLocation(userPickupAddress);
+      // Provider.of<AppData>(context, listen: false)
+      //     .updatePickupLocation(userPickupAddress);
+      print(userPickupAddress.placeName);
     }
     return placeAddress;
   }

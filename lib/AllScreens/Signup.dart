@@ -139,7 +139,7 @@ class Signup extends StatelessWidget {
                       onPressed: () {
                         if (nameTextEditingController.text.length < 4) {
                           displayToastMessage(
-                              "Name must be atleast 3 characters", context);
+                              "Name must be atleast 4 characters", context);
                          
                         } else if (phoneTextEditingController.text.length <
                             10) {
@@ -198,8 +198,8 @@ class Signup extends StatelessWidget {
       };
       userRef.child(firebaseUser.uid).set(userDataMap);
       displayToastMessage("Your account has been created", context);
-      Navigator.pushNamedAndRemoveUntil(
-          context, mainScreen.idScreen, (route) => false);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context)=>mainScreen()));
     } else {
       displayToastMessage("NMew user account has not created.", context);
     }

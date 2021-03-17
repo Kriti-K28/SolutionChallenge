@@ -9,6 +9,7 @@ import 'package:tracking_app/AllScreens/searchScreen.dart';
 import 'package:tracking_app/AllWidgets/Divider.dart';
 import 'package:tracking_app/Assistants/assistantMethods.dart';
 import 'package:tracking_app/DataHandle/appData.dart';
+import 'package:tracking_app/Models/address.dart';
 
 // ignore: camel_case_types
 class mainScreen extends StatefulWidget {
@@ -45,6 +46,7 @@ class _mainScreenState extends State<mainScreen> {
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -255,12 +257,13 @@ class _mainScreenState extends State<mainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(Provider.of<AppData>(context).pickUpLocation !=
-                                    null
-                                ? Provider.of<AppData>(context)
+                            Text(
+                                 Provider.of<AppData>(context)
                                     .pickUpLocation
-                                    .placeName
-                                : "Add Home"),
+                                   
+                                // :
+                                //  "Add Home"
+                                 ),
                             SizedBox(
                               height: 4.0,
                             ),

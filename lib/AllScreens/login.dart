@@ -117,8 +117,8 @@ class login extends StatelessWidget {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, Signup.idScreen, (route) => false);
+                 Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context)=>mainScreen()));
               },
               child: Text(
                 "Do not have account ? Register now",

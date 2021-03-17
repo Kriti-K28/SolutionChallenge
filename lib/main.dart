@@ -20,25 +20,31 @@ void main() async {
 DatabaseReference userRef =
     FirebaseDatabase.instance.reference().child("users");
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => AppData(), 
-        child: MaterialApp(
+    return 
+        MaterialApp(
         title: "Flutter App",
+        home: mainScreen(),
         theme: ThemeData(
+          
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        initialRoute: mainScreen.idScreen,
+        // initialRoute: mainScreen.idScreen,
         routes: {
           Signup.idScreen: (context) => Signup(),
           login.idScreen: (context) => login(),
           mainScreen.idScreen: (context) => mainScreen(),
         },
         debugShowCheckedModeBanner: false,
-      ),
+      
     );
   }
 }
