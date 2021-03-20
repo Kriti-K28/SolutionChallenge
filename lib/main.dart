@@ -1,3 +1,5 @@
+
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -15,36 +17,31 @@ void main() async {
       ChangeNotifierProvider(create : (_) => AppData()),
     ],
     child: MyApp()));
+  // runApp(MyApp());
 }
 
 DatabaseReference userRef =
     FirebaseDatabase.instance.reference().child("users");
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return 
-        MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context)=>AppData(),
+      child: MaterialApp(
         title: "Flutter App",
-        home: mainScreen(),
         theme: ThemeData(
-          
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        // initialRoute: mainScreen.idScreen,
+        initialRoute: mainScreen.idScreen,
         routes: {
           Signup.idScreen: (context) => Signup(),
           login.idScreen: (context) => login(),
           mainScreen.idScreen: (context) => mainScreen(),
         },
         debugShowCheckedModeBanner: false,
-      
+      ),
     );
   }
 }
