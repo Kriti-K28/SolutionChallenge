@@ -10,7 +10,7 @@ class AssistantMethods {
     String placeAddress = "";
     String st1, st2, st3, st4;
     String url =
-        "https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.latitude},${position.longitude}&key=$mapKey";
+        "https://maps.googleapis.com/maps/api/geocode/json?latlng="+(position.latitude).toString()+","+(position.longitude).toString()+"&key="+mapKey;
     var response = await RequestAssitant.getRequest(url);
     if (response != "failed") {
       // placeAddress = response["results"][0]["formatted_address"];

@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tracking_app/AllScreens/mainScreen.dart';
+import 'package:tracking_app/Assistants/allinfo.dart';
 import 'package:tracking_app/Assistants/requestAssistant.dart';
 import 'package:tracking_app/DataHandle/appData.dart';
 import 'package:tracking_app/configMap.dart';
@@ -18,7 +20,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     String placeAddress =
-        Provider.of<AppData>(context).pickUpLocation.placeName ?? "";
+        allinfo.address;
+        print(placeAddress);
     pickUpTextEditingController.text = placeAddress;
     return Scaffold(
       body: Column(

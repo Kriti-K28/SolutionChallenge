@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:tracking_app/AllScreens/searchScreen.dart';
 import 'package:tracking_app/AllWidgets/Divider.dart';
 import 'package:tracking_app/Assistants/assistantMethods.dart';
+import 'package:tracking_app/Assistants/allinfo.dart';
 import 'package:tracking_app/DataHandle/appData.dart';
 import 'package:tracking_app/Models/address.dart';
 
@@ -16,7 +17,11 @@ class mainScreen extends StatefulWidget {
   static const String idScreen = "mainScreen";
   @override
   _mainScreenState createState() => _mainScreenState();
+
+  
 }
+Position currentPosition;
+String address;
 
 // ignore: camel_case_types
 class _mainScreenState extends State<mainScreen> {
@@ -24,26 +29,29 @@ class _mainScreenState extends State<mainScreen> {
   GoogleMapController newMapController;
 
   GlobalKey<ScaffoldState> scaffoldkey = new GlobalKey<ScaffoldState>();
-  Position currentPosition;
+  
   var geoLocator = Geolocator();
   double bottomPadingofMap = 0;
 
-  void locatePosition() async {
+   void locatePosition() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+        //print("pqr");
     currentPosition = position;
     LatLng latLatPostion = LatLng(position.latitude, position.longitude);
     CameraPosition cameraPosition =
         new CameraPosition(target: latLatPostion, zoom: 14);
     newMapController
         .animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
-    String address =
+     address =
         await AssistantMethods.searchCoordinateAddress(position, context);
     print("This is your address :" + address);
+    allinfo.address=address;
+    
   }
-
+  
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(23.2403462802915, 75.74525058029151),
     zoom: 14.4746,
   );
   
@@ -51,10 +59,7 @@ class _mainScreenState extends State<mainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldkey,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("Main Screen"),
-      ),
+      
       drawer: Container(
         color: Colors.white,
         width: 255.0,
@@ -257,7 +262,7 @@ class _mainScreenState extends State<mainScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                              Text("Add home"),
+                              Text(allinfo.address),
                             // Text(
                             //      Provider.of<AppData>(context).pickUpLocation !=null ?
 
@@ -314,6 +319,7 @@ class _mainScreenState extends State<mainScreen> {
           ),
         ],
       ),
-    );
+      )
+    ;
   }
 }
