@@ -5,5 +5,6 @@ class allinfo
 {
   static String address="default";
   static Position currentPosition;
+  static String dest="def";
 
 }
