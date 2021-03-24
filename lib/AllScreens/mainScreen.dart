@@ -46,12 +46,19 @@ class _mainScreenState extends State<mainScreen> {
      address =
         await AssistantMethods.searchCoordinateAddress(position, context);
     print("This is your address :" + address);
-    allinfo.address=address;
+     changethisstate();
     
   }
-  
+  changethisstate()
+  {
+    setState(() {
+      print("setstate");
+      allinfo.address=address;
+
+    });
+  }
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(23.2403462802915, 75.74525058029151),
+     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
   

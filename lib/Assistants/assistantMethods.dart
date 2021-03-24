@@ -19,10 +19,10 @@ class AssistantMethods {
       st3 = response["results"][0]["address_components"][5]["long_name"];
       st4 = response["results"][0]["address_components"][6]["long_name"];
       placeAddress = st1 + ", " + st2 + ", " + st3 + ", " + st4;
-      Address userPickupAddress = new Address();
-      userPickupAddress.longitutde = position.longitude;
-      userPickupAddress.latitude = position.latitude;
-      userPickupAddress.placeName = placeAddress;
+      // Address userPickupAddress = new Address();
+      // userPickupAddress.longitutde = position.longitude;
+      // userPickupAddress.latitude = position.latitude;
+      // userPickupAddress.placeName = placeAddress;
       // Provider.of<AppData>(context, listen: false)
       //      .updatePickupLocation(userPickupAddress);
       
