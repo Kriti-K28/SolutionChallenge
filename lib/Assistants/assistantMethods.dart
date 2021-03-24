@@ -23,8 +23,8 @@ class AssistantMethods {
       userPickupAddress.longitutde = position.longitude;
       userPickupAddress.latitude = position.latitude;
       userPickupAddress.placeName = placeAddress;
-      Provider.of<AppData>(context, listen: false)
-           .updatePickupLocation(userPickupAddress);
+      // Provider.of<AppData>(context, listen: false)
+      //      .updatePickupLocation(userPickupAddress);
       
     }
     return placeAddress;
