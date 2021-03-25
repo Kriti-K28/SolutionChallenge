@@ -9,6 +9,7 @@ import 'package:tracking_app/AllWidgets/Divider.dart';
 import 'package:tracking_app/Assistants/allinfo.dart';
 import 'package:tracking_app/Assistants/requestAssistant.dart';
 import 'package:tracking_app/DataHandle/appData.dart';
+import 'package:tracking_app/Models/address.dart';
 import 'package:tracking_app/Models/placePrediction.dart';
 import 'package:tracking_app/configMap.dart';
 
@@ -188,39 +189,62 @@ class PredictionTile extends StatelessWidget {
   PredictionTile({Key key, this.placePredictions}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:Column(
-        children: [
-          SizedBox(width: 10.0,),
-          Row(
-           children: [
-             Icon(Icons.add_location),
-             SizedBox(
-              width: 14.0,
-            ),
-            Expanded(
-                        child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    placePredictions.main_text, overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  SizedBox(
-                    height: 3.0,
-                  ),
-                  Text(
-                    placePredictions.secondary_text,overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                  ),
-                ],
+    return FlatButton(
+      onPressed: (
+
+      ),
+      child: Container(
+        padding: EdgeInsets.all(0.0),
+        child:Column(
+          children: [
+            SizedBox(width: 10.0,),
+            Row(
+             children: [
+               Icon(Icons.add_location),
+               SizedBox(
+                width: 14.0,
               ),
-            )
+              Expanded(
+                          child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      placePredictions.main_text, overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                    SizedBox(
+                      height: 3.0,
+                    ),
+                    Text(
+                      placePredictions.secondary_text,overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          SizedBox(width: 10.0,),
           ],
         ),
-        SizedBox(width: 10.0,),
-        ],
       ),
     );
+  }
+  void getPlaceAddressDetails(String placeId) async
+  {
+    String placeDetailsUrl = "https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&key=$mapKey";
+    var res= await RequestAssitant.getRequest(placeDetailsUrl);
+    if(res == "failed")
+    {
+      return;
+    }
+    if(res["status"]=="OK")
+    {
+        Address address =Address();
+        address.placeName = res["result"]["name"];
+        address.placeId = placeId;
+        address.latitude = res["result"]["geometry"]["location"]["lat"];
+        address.longitutde = res["result"]["geometry"]["location"]["lng"];
+    }
   }
 }
