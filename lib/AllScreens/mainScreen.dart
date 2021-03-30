@@ -80,7 +80,7 @@ class _mainScreenState extends State<mainScreen> {
                   child: Row(
                     children: [
                       Image.asset(
-                        "images/car_demo.jpg",
+                        "images/user_icon.png",
                         height: 65.0,
                         width: 65.0,
                       ),

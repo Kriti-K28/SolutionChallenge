@@ -56,6 +56,9 @@ flutter:
   assets:
      - images/car_demo.jpg
      - images/logo.png
+     - images/car_android.png
+     - images/user_icon.png
+     - images/desticon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -68,7 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   Row(
                     children: [
                       Image.asset(
-                        "images/car_demo.jpg",
+                        "images/desticon.png",
                         height: 16.0,
                       ),
                       SizedBox(
@@ -103,7 +103,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   Row(
                     children: [
                       Image.asset(
-                        "images/car_demo.jpg",
+                        "images/desticon.png",
                         height: 16.0,
                       ),
                       SizedBox(
@@ -190,9 +190,9 @@ class PredictionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: (
+      // onPressed: (
 
-      ),
+      // ),
       child: Container(
         padding: EdgeInsets.all(0.0),
         child:Column(
